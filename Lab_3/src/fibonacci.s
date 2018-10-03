@@ -13,11 +13,11 @@
  * -----------------------------------
  *     int fibonacci(int n){
  *  	     if(n == 0)
- *		        return 0;
- *	      if(n == 1)
- *		        return 1;
- *	       else
- *		        return fibonacci(n-1) + fibonacci(n-2);
+ *	     	return 0;
+ *	     if(n == 1)
+ *		return 1;
+ *	     else
+ *		return fibonacci(n-1) + fibonacci(n-2);
  *     }
  *
  * ***************************************************************************/
@@ -36,28 +36,28 @@ fibonacci:
 	add	r7, sp, #0
 	str r0, [r7, #4]	 // Store return r0 on stack
 
-	cmp r0, #0 			   // if(n == 0)
+	cmp r0, #0 		 // if(n == 0)
 	beq ZERO
-	cmp r0, #1		   	 // if(n == 1)
+	cmp r0, #1		 // if(n == 1)
 	beq ONE
-	cmp r0, #21			   // if(n <= 20)
+	cmp r0, #21	  	 // if(n <= 20)
 	beq EXIT
 
 	/* return fibonacci(n-1) + fibonacci(n-2); */
 	ldr r1, [r7, #4]	 // Store n in r1
-	subs r1, #1			   // n-1
-	movs r0, r1			   // Store return on stack to be used recursively
-	bl fibonacci		   // Recursive call
+	subs r1, #1		 // n-1
+	movs r0, r1		 // Store return on stack to be used recursively
+	bl fibonacci		 // Recursive call
 
-	movs r2, r0		     // Move output into temp register
+	movs r2, r0		 // Move output into temp register
 	ldr r1, [r7, #4]	 // Grab n value
-	subs r1, #2			   // n-2
-	movs r0, r1			   // Store return on stack to be used recursively
-	bl fibonacci		   // Recursive call
+	subs r1, #2		 // n-2
+	movs r0, r1		 // Store return on stack to be used recursively
+	bl fibonacci		 // Recursive call
 
-	movs r1, r0			   // Move output to r1
+	movs r1, r0		 // Move output to r1
 	adds r1, r2, r1		 // Add current + previous
-	movs r0, r1			   // Move to r0 which is return
+	movs r0, r1		 // Move to r0 which is return
 	b EXIT
 
 ZERO:
@@ -69,6 +69,6 @@ ONE:
 	b EXIT
 
 EXIT:
-	mov	sp, r7			    // Restore Stack
+	mov	sp, r7	         // Restore Stack
 	add	sp, sp, #12
 	pop	{r2, r7, pc}
