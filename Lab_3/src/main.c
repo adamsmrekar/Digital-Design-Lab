@@ -151,12 +151,12 @@ int * parseFib(int n){
  * 		Translates Fibonacci Number into Morse Code
  *******************************************************/
 void translateFib(int fibNum){
-	int *arr;											// Pointer for Array
+	int *arr;				// Pointer for Array
 
-	arr = parseFib(fibNum);				// Parse Fibonacci Hex
+	arr = parseFib(fibNum);			// Parse Fibonacci Hex
 
 	for(int i = 0; i < 4; i++){		// Loop Array
-		switch(arr[i]){							// Switch statement for each hex digit
+		switch(arr[i]){			// Switch statement for each hex digit
 			case 0x0:
 				printf("0...");
 				dash();
@@ -281,10 +281,10 @@ void translateFib(int fibNum){
 
 int main() {
 	int x;
-	init_timer32(0, TIME_INTERVAL);					// Initialize Timer_32_0
-	enable_timer32(0);											// Enable Timer_32_0
+	init_timer32(0, TIME_INTERVAL);		// Initialize Timer_32_0
+	enable_timer32(0);			// Enable Timer_32_0
 
-	GPIOInit(); 														// Initialize GPIO (sets up clock)
+	GPIOInit(); 				// Initialize GPIO (sets up clock)
 	GPIOSetDir(LED_PORT_R, LED_BIT_R, 1 );  // Set LED port pin to output - Red
 	GPIOSetDir(LED_PORT_G, LED_BIT_G, 1 );  // Set LED port pin to output - Green
 	GPIOSetDir(LED_PORT_B, LED_BIT_B, 1 );  // Set LED port pin to output - Blue
